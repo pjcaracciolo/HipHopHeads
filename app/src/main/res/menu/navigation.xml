@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/allReleases"
+        android:title="@string/all_releases"
+        android:icon="@drawable/ic_all" />
+    <item android:id="@+id/myReleases"
+        android:title="@string/my_releases"
+        android:icon="@drawable/ic_check" />
+    <item android:id="@+id/savedReleases"
+        android:title="@string/saved"
+        android:icon="@drawable/ic_favorite" />
+</menu>

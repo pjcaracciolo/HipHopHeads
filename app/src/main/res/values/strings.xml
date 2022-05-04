@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HipHopHeads</string>
+    <string name="adpater_placeholder_name">[FRESH] Post Title</string>
+    <string name="links_button">Listen</string>
+    <string name="link_button_speakable">This button will open a link to the song on a streaming service</string>
+    <string name="close">Close</string>
+
+    <string name="all_releases">All Releases</string>
+    <string name="my_releases">My Releases</string>
+    <string name="saved">Saved</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
