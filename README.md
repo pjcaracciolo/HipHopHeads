@@ -9,3 +9,5 @@ Technologies Employed -
 * MVVM
 * Retrofit
 * Room
+
+The HipHopHeads app works via crowdsourcing music releases. It does this by using Retrofit to read posts from the HipHopHeads forum on Reddit. When new music is released, users will tag the post as [FRESH], indicating that a new release has come out. The app then scans the post and its comments for links to the new music on various streaming platforms.
