@@ -1,8 +1,13 @@
-package com.hiphopheads
+package com.hiphopheads.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.hiphopheads.R
+import com.hiphopheads.CommentsModel
+import com.hiphopheads.Link
+import com.hiphopheads.repositories.RedditRepository
+import com.hiphopheads.models.Posts
+import com.hiphopheads.models.RedditModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -78,7 +83,7 @@ class RedditViewModel constructor(private val repository: RedditRepository) : Vi
 
     fun isFreshPost(title: String?) : Boolean? {
         val lowercaseTitle = title?.lowercase()
-        return (lowercaseTitle?.contains("[fresh]")!! || lowercaseTitle?.contains("[fresh album]")!! || lowercaseTitle?.contains("[fresh ep]")!! || lowercaseTitle?.contains("[fresh mixtape]")!!)
+        return (lowercaseTitle?.contains("[fresh]")!! || lowercaseTitle.contains("[fresh album]") || lowercaseTitle.contains("[fresh ep]") || lowercaseTitle.contains("[fresh mixtape]"))
     }
 
     fun setLinks(child : Posts) {

@@ -1,6 +1,6 @@
-package com.hiphopheads
+package com.hiphopheads.repositories
 
-import androidx.lifecycle.MutableLiveData
+import com.hiphopheads.RetrofitService
 
 class RedditRepository constructor(private val retrofitService: RetrofitService) {
     fun getAllMovies() = retrofitService.getAllMovies()

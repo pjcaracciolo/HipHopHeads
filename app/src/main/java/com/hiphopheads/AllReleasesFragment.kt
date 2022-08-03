@@ -17,16 +17,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hiphopheads.R
 import com.example.hiphopheads.databinding.FragmentAllReleasesBinding
+import com.hiphopheads.models.Links
+import com.hiphopheads.models.Posts
+import com.hiphopheads.repositories.RedditRepository
+import com.hiphopheads.room.Release
+import com.hiphopheads.viewmodels.RedditViewModel
+import com.hiphopheads.viewmodels.RedditViewModelFactory
+import com.hiphopheads.viewmodels.ReleaseViewModel
 
 class AllReleasesFragment : Fragment() {
 
     private lateinit var binding: FragmentAllReleasesBinding
     private lateinit var viewModel: RedditViewModel
+    lateinit var releaseViewModel: ReleaseViewModel
     private val retrofitService = RetrofitService.getInstance()
     private lateinit var adapter : MainAdapter
     private lateinit var postsList: List<Posts>
     private var artists: Array<String>? = null
+
     companion object {
+        @JvmStatic
         fun newInstance() = AllReleasesFragment()
     }
 
@@ -36,7 +46,10 @@ class AllReleasesFragment : Fragment() {
         if(args != null) {
             artists = args.getStringArray("artists")
         }
-        viewModel = ViewModelProvider(this, RedditViewModelFactory(RedditRepository(retrofitService))).get(RedditViewModel::class.java)
+        viewModel = ViewModelProvider(this, RedditViewModelFactory(RedditRepository(retrofitService))).get(
+            RedditViewModel::class.java)
+        releaseViewModel = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().application)).get(
+            ReleaseViewModel::class.java)
         adapter = MainAdapter{position -> onListItemClick(position)}
     }
 
@@ -77,6 +90,7 @@ class AllReleasesFragment : Fragment() {
 
     private fun onListItemClick(position: Int) {
         val current = postsList[position]
+        releaseViewModel.addRelease(Release(current.data?.title!!, current.data?.url!!, current.data?.permalink!!, current.data?.thumbnail!!, 667, "", "", "", "", "", "", "", "", ""/*current.data?.links?.spotify?.link!!, current.data?.links?.apple?.link!!, current.data?.links?.amazon?.link!!, current.data?.links?.tidal?.link!!, current.data?.links?.deezer?.link!!, current.data?.links?.youtubeMusic?.link!!, current.data?.links?.youtube?.link!!, current.data?.links?.soundcloud?.link!!, current.data?.links?.bandcamp?.link!!*/))
         viewModel.commentsList.observe(viewLifecycleOwner, Observer {
             viewModel.setLinks(it[1], current)
             displayLinksDialog(current.data?.links?.getLinks())

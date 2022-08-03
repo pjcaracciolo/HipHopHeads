@@ -1,7 +1,8 @@
-package com.hiphopheads
+package com.hiphopheads.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.hiphopheads.repositories.RedditRepository
 import java.lang.IllegalArgumentException
 
 class RedditViewModelFactory constructor(private val repository: RedditRepository): ViewModelProvider.Factory {
