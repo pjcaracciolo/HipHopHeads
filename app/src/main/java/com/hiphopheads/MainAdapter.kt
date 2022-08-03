@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hiphopheads.databinding.AdapterPostBinding
+import com.hiphopheads.models.Posts
 
 class MainAdapter(private val onItemClicked: (position: Int) -> Unit): RecyclerView.Adapter<MainViewHolder>() {
     private var posts = mutableListOf<Posts>()
@@ -44,18 +45,18 @@ class MainAdapter(private val onItemClicked: (position: Int) -> Unit): RecyclerV
         return title?.replace("\\[.*\\]".toRegex(), "")?.trim();
     }
 
-    private fun getMediaType(title: String?) : String? {
+    private fun getMediaType(title: String?) : String {
         var lowercaseTitle : String? = title?.lowercase()
         if (lowercaseTitle?.startsWith("[fresh]")!!) {
             return "Song"
         }
-        if (lowercaseTitle?.startsWith("[fresh album]")!!) {
+        if (lowercaseTitle.startsWith("[fresh album]")) {
             return "Album"
         }
-        if (lowercaseTitle?.startsWith("[fresh ep]")!!) {
+        if (lowercaseTitle.startsWith("[fresh ep]")) {
             return "EP"
         }
-        if (lowercaseTitle?.startsWith("[fresh mixtape]")!!) {
+        if (lowercaseTitle.startsWith("[fresh mixtape]")) {
             return "Mixtape"
         }
         return "Unknown"

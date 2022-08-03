@@ -1,6 +1,7 @@
-package com.hiphopheads
+package com.hiphopheads.models
 
 import com.google.gson.annotations.SerializedName
+import com.hiphopheads.Link
 
 
 data class RedditModel (

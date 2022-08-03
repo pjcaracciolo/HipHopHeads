@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.hiphopheads.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
+import com.hiphopheads.models.Posts
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener{
 
@@ -40,8 +41,8 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
 
             }
             R.id.savedReleases -> {
-                //fragment = SearchFragment()
-                //loadFragment(fragment)
+                fragment = SavedReleasesFragment.newInstance()
+                loadFragment(fragment)
                 return true
 
             }
